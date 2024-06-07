@@ -75,8 +75,19 @@ function paragraphsCounter(string: string): number {
 function commonWords(string: string): CommonWordsObject {
   const wordRegex = /[ \n]/
   const words = string.split(wordRegex)
-  const excludedWords = ['the', 'and', 'to', 'of', 'a', 'in', 'that', 'is', 'was', 'he']
-  
+  const excludedWords = [
+    'the',
+    'and',
+    'to',
+    'of',
+    'a',
+    'in',
+    'that',
+    'is',
+    'was',
+    'he',
+  ]
+
   const normalizedWords = words
     .map((word) =>
       word
@@ -84,7 +95,7 @@ function commonWords(string: string): CommonWordsObject {
         .replace(/[.,!?;:]\s*$/, '')
         .toLowerCase(),
     )
-    .filter(word => !excludedWords.includes(word))
+    .filter((word) => !excludedWords.includes(word))
     .sort()
     .filter(hasNoSpace)
 
